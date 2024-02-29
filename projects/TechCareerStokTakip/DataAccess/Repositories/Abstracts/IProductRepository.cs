@@ -9,6 +9,6 @@ namespace DataAccess.Repositories.Abstracts
     {
         List<ProductDetailDto> GetAllProductDetails();
         List<ProductDetailDto> GetDetailsByCategoryId(int categoryId);
-        ProductDetailDto GetProductDetail(int id);
+        ProductDetailDto? GetProductDetail(Guid id);
     }
 }

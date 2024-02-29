@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "projects\TechCare
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Persistence", "corePackages\Core.Persistence\Core.Persistence.csproj", "{CB509CCE-5B13-41BC-9A9C-FBB270D8052A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Shared", "corePackages\Core.Shared\Core.Shared.csproj", "{5B9E65E3-8E30-4719-BF4A-4B0948CF1FC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{CB509CCE-5B13-41BC-9A9C-FBB270D8052A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB509CCE-5B13-41BC-9A9C-FBB270D8052A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB509CCE-5B13-41BC-9A9C-FBB270D8052A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B9E65E3-8E30-4719-BF4A-4B0948CF1FC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B9E65E3-8E30-4719-BF4A-4B0948CF1FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B9E65E3-8E30-4719-BF4A-4B0948CF1FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B9E65E3-8E30-4719-BF4A-4B0948CF1FC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{090636EA-6A89-4F6A-8CF4-296E4BCC6ED3} = {4294D6B5-AE98-47A5-9633-CBF748BA977D}
 		{728F6AC0-C8C7-4596-8396-1AFD79CBFE78} = {4294D6B5-AE98-47A5-9633-CBF748BA977D}
 		{CB509CCE-5B13-41BC-9A9C-FBB270D8052A} = {5C8BAD9A-CB5F-40B6-B924-B48268974597}
+		{5B9E65E3-8E30-4719-BF4A-4B0948CF1FC4} = {5C8BAD9A-CB5F-40B6-B924-B48268974597}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39E2AD33-F040-4112-8859-57146DDD808E}
