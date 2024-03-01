@@ -2,6 +2,8 @@ using DataAccess.Context;
 using DataAccess.Repositories.Abstracts;
 using DataAccess.Repositories.Concrete;
 using Microsoft.EntityFrameworkCore;
+using Service.Abstract;
+using Service.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,9 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"))
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 

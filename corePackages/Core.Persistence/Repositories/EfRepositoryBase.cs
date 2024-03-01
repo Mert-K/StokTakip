@@ -42,9 +42,10 @@ public class EfRepositoryBase<TContext, TEntity, TId> : IEntityRepository<TEntit
 
     public TEntity? GetByFilter(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
     {
-        IQueryable<TEntity> queryable = Query();
-        queryable = queryable.Where(predicate);
+        IQueryable<TEntity> queryable = Query(); //Query metodunun içi DbSet<TEntity> dönüyor. DbSet<TEntity>'de IQueryable<TEntity>'den türediği için Query metodunun geri dönüş tipini IQueryable<TEntity> yapabiliriz. Bunu yapmamızın amacı IQueryable<TEntity> tipine sorgu yazabiliriz aşağıdaki gibi. Ancak DbContext tipine sorgu yazamayız. Yani Context.Where(.....) şeklinde yazılamaz. Aşağıdaki Where metodu bir extension metottur ve this olarak IQueryable<TEntity> almaktadır.
 
+        queryable = queryable.Where(predicate);
+        
         if (include is not null)
             queryable = include(queryable);
         return queryable.FirstOrDefault();
@@ -55,7 +56,7 @@ public class EfRepositoryBase<TContext, TEntity, TId> : IEntityRepository<TEntit
         IQueryable<TEntity> queryable = Query();
         if (include is not null)
             queryable = include(queryable);
-        return queryable.SingleOrDefault(x=>x.Id.Equals(id));
+        return queryable.SingleOrDefault(x => x.Id.Equals(id));
     }
 
     public void Update(TEntity entity)

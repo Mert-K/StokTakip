@@ -19,6 +19,7 @@ public class ProductService : IProductService
     public Response<ProductResponseDto> Add(ProductAddRequest request)
     {
         Product product = ProductAddRequest.ConvertToEntity(request);
+        product.Id = new Guid();
         _productRepository.Add(product);
 
         var data = ProductResponseDto.ConvertToResponse(product);
@@ -81,21 +82,45 @@ public class ProductService : IProductService
 
     public Response<List<ProductDetailDto>> GetAllDetailsByCategoryId(int categoryId)
     {
-        throw new NotImplementedException();
+        List<ProductDetailDto> details = _productRepository.GetDetailsByCategoryId(categoryId);
+        return new Response<List<ProductDetailDto>>()
+        {
+            Data = details,
+            StatusCode = System.Net.HttpStatusCode.OK
+        };
     }
 
     public Response<ProductDetailDto> GetByDetailId(Guid id)
     {
-        throw new NotImplementedException();
+        ProductDetailDto? productDetail = _productRepository.GetProductDetail(id);
+        return new Response<ProductDetailDto>()
+        {
+            Data = productDetail,
+            StatusCode = System.Net.HttpStatusCode.OK
+        };
     }
 
     public Response<ProductResponseDto> GetById(Guid id)
     {
-        throw new NotImplementedException();
+        Product? product = _productRepository.GetById(id);
+        ProductResponseDto productResponseDto = ProductResponseDto.ConvertToResponse(product);
+        return new Response<ProductResponseDto>()
+        {
+            Data = productResponseDto,
+            StatusCode = System.Net.HttpStatusCode.OK
+        };
     }
 
     public Response<ProductResponseDto> Update(ProductUpdateRequest request)
     {
-        throw new NotImplementedException();
+        Product product = ProductUpdateRequest.ConvertToEntity(request);
+        _productRepository.Update(product);
+
+        ProductResponseDto response = ProductResponseDto.ConvertToResponse(product);
+        return new Response<ProductResponseDto>()
+        {
+            Data = response,
+            StatusCode = System.Net.HttpStatusCode.OK
+        };
     }
 }

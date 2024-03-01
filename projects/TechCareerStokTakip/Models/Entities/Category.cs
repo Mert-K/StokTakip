@@ -11,7 +11,9 @@ public class Category : Entity<int>
 
     public static implicit operator Category(CategoryAddRequest categoryAddRequest) =>
         new Category() { Name = categoryAddRequest.Name };
+    //Category category = categoryAddRequest;
 
     public static implicit operator Category(CategoryUpdateRequest request) =>
         new Category { Name = request.Name, Id = request.Id };
+    //Category category = request;
 }
