@@ -1,7 +1,5 @@
-using DataAccess.Context;
-using DataAccess.Repositories.Abstracts;
-using DataAccess.Repositories.Concrete;
-using Microsoft.EntityFrameworkCore;
+using DataAccess;
+using Service;
 using Service.Abstract;
 using Service.Concrete;
 
@@ -14,15 +12,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Kendi IOC kayýtlarým
-builder.Services.AddDbContext<BaseDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
+//KENDÝ IOC KAYITLARIM
+builder.Services.AddDataAccessDependencies(builder.Configuration); //DataAccess katmanýndaki extension method, kendim oluþturdum
+builder.Services.AddServiceDependencies(); //Service katmanýndaki extension method, kendim oluþturdum
 
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 
